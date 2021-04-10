@@ -1,0 +1,158 @@
+\:root
+  --mouseX: 0deg
+  --mouseY: 0deg
+
+.main
+  display: flex
+  flex-wrap: wrap
+  &-block
+    padding: 58px 0px
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-basis: 50%
+    &:nth-child(odd)
+      border-right: 1px solid #000
+    &:first-child, &:nth-child(2)
+      border-bottom: 1px solid #000
+  &-card
+    background-color: #fff
+    border-radius: 16px
+    padding: 50px 24px
+    position: relative
+    transform: rotateX(calc(calc(var(--mouseY)))) rotateY(calc(var(--mouseX)))
+    z-index: 2
+    color: #191B1D
+    text-align: center
+    display: flex
+    flex-direction: column
+    align-items: center
+    max-width: 284px
+    &__title
+      font-weight: bold
+      font-size: 28px
+      line-height: 32px
+    &__description
+      font-size: 20px
+      line-height: 28px
+    &__button
+      @extend .button
+    &::after
+      display: block
+      zi: 1px
+      position: absolute
+      top: 0
+      left: -130px
+      content: ''
+      background-image: url('../img/birds.png')
+      background-repeat: no-repeat
+      background-position: center top
+      width: 475px
+      height: 210px
+  &-tab
+    background-color: #fff
+    padding: 90px 44px
+    display: flex
+    min-width: 504px
+    &__aside
+      margin-right: 36px
+      ul li
+        padding: 12px 36px
+        font-weight: 800
+        font-size: 20px
+        line-height: 24px
+        color: #191B1D
+        opacity: 0.35
+        cursor: pointer
+        &:hover
+          background-color: rgba(#f4f4f4, .95)
+        &.active
+          background-color: #f4f4f4
+          opacity: 1
+    &__content
+      overflow-y: scroll
+      max-height: 400px
+      details
+        cursor: pointer
+        width: 272px
+        border-bottom: 1px solid #F4F4F4
+        line-height: 16px
+        padding: 0px 20px 16px 12px
+        &[open] > summary::before
+          content: url('../img/arrow-open.svg')
+        summary
+          font-weight: bold
+          font-size: 16px
+          padding: 28px 0px 16px
+          color: #191B1D
+          position: relative
+          &::before
+            content: url('../img/arrow-close.svg')
+            position: absolute
+            right: 0
+        p
+          font-size: 13px
+          color: #191B1D
+  &-form
+    border-top: 5px solid #FDD170
+    background-color: #fff
+    padding: 54px 32px
+    width: 504px
+    display: flex
+    flex-direction: column
+    align-items: center
+    &__title
+      font-weight: bold
+      font-size: 40px
+      line-height: 68px
+      color: #191B1D
+    &__description
+      font-size: 16px
+      line-height: 24px
+      color: #191B1D
+      margin-bottom: 32px
+    .form
+      input, select, textarea
+        width: 100%
+        margin-bottom: 32px
+      textarea
+        resize: none
+      &__select
+        &.error
+          color: #EB5757
+        option[selected]
+          display: none
+      &__input, &__select
+        border-bottom: 1px solid #F4F4F4
+        padding: 8px 16px
+      &__input
+        &.error
+          border-bottom: 1px solid #EB5757
+          color: #EB5757
+          &::placeholder
+            color: #EB5757
+        &::placeholder
+          color: #000
+      &__file
+        margin-bottom: 32px
+        label
+          display: flex
+          align-items: center
+          cursor: pointer
+          font-weight: 600
+          font-size: 14px
+          line-height: 24px
+          color: #191B1D
+          span.circle
+            margin-right: 12px
+            border-radius: 50%
+            width: 56px
+            height: 56px
+            border: 1px solid #F4F4F4
+            display: flex
+            align-items: center
+            justify-content: center
+        input
+          display: none
+      &__submit
+        @extend .button
